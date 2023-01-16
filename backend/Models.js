@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
-const { UserSchema } = require("./Schemas");
+const { PostSchema, EmailSchema } = require("./Schemas");
 
-const UserModel = mongoose.model("User", UserSchema);
+const EmailModel = mongoose.model("Email", EmailSchema);
+const PostModel = mongoose.model("Post", PostSchema);
 
 module.exports = {
-    UserModel,
-}
+    EmailModel,
+    PostModel,
+};

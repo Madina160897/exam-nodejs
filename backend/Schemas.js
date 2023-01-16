@@ -1,12 +1,21 @@
 const { Schema } = require("mongoose");
 
-const UserSchema = new Schema({
-    fullName: String,
-    login: String,
+const EmailSchema = new Schema({
+    email: String,
     password: String,
-})
+    name: String,
+    surname: String,
+    age: Number,
+});
 
+const PostSchema = new Schema({
+    owner: EmailSchema,
+    post: String,
+    img: Number,
+    ownersHistory: [EmailSchema],
+});
 
 module.exports = {
-    UserSchema,
-}
+    PostSchema,
+    EmailSchema,
+};

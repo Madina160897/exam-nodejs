@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost:8080/static/style.css">
+    <title>Personal Area</title>
+</head>
+
+<body>
+
+    <div class="fon-user">
+        <header>
+            <div class="head">
+                <div class="icon-line"> <img class="acc" src="./img/free-icon-news-feed-4520862.png">
+                    <a class="header-text ml-5" href="./newsline.html"> Лента новостей</a>
+                </div>
+                <div class="icon-line"> <img class="acc" src="./img/free-icon-users-5013404.png"> <a
+                        class="header-text ml-5" href="./users.html">Список пользователей</a> </div>
+                <div class=" str icon-line"> <img class="acc"
+                        src="./img/png-transparent-computer-icons-user-user-icon.png">
+                    <span class="ml-5">Личный кабинет</span>
+                </div>
+                <div class="more_div"></div>
+                <button class="exit">Выйти</button>
+            </div>
+        </header>
+
+        <main>
+
+            <div class="pors_block">
+
+                <div class="area-info">
+                    <img class="per-img" src="./img/png-transparent-computer-icons-user-user-icon.png">
+                    <div class="per-info">
+                        <div>
+                            <b class="user-info">Surname</b> <b class="user-info">Name</b>
+                        </div>
+                        <p>Age</p>
+                        <button class="btn-red-info">Pедактировать данные</button>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="news-post-info">
+                <div class="new-post">
+                    <input type="text" name="" id="post-add">
+                    <div class="mt-10">
+                        <button class="btn-red">Сохранить</button>
+                        <button class="btn-red">Pедактировать пост</button>
+                        <button class="btn-red">Удалить</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="posts_block">
+
+                <div class="post-block-box">
+
+                    <div class="img-sn">
+
+                        <div>
+                            <img class="img-user" src="./img/png-transparent-computer-icons-user-user-icon.png">
+                        </div>
+
+                        <div class="name-sn">
+                            <b class="surname-user ml-5"> ${user.surname} </b> <b class="name-user ml-5"> ${user.name}
+                            </b>
+                        </div>
+                    </div>
+                    <div class="post-like">
+                        <div class="post">Post</div>
+
+                        <button class="like"> like</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </main>
+    </div>
+
+</body>
+<script src="./personalArea.js"></script>
+
+</html>

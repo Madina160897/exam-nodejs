@@ -1,45 +1,275 @@
-.box{
+body {
+    background-color: rgba(200, 245, 223, 0.644);
+}
+
+.box {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 10%;
 }
 
-.login{
+.login {
+    margin-left: 30%;
+    margin-top: 10%;
     width: 400px;
     height: 400px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    border: 1px solid green;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(4, 80, 48);
 }
 
-.mt-10{
+.mt-10 {
     margin-top: 10px;
 }
 
-.mt-20{
+.mt-20 {
     margin-top: 20px;
 }
 
-.reg{
+.reg {
     display: flex;
     justify-content: space-between;
 }
 
-b{
+.reg {
     font-size: 40px;
 }
 
-.input{
-    width: 400px;
+.input {
+    width: 300px;
     height: 30px;
     border: 2px solid black;
     padding-left: 2%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px gray;
 }
 
-.but{
-    width: 100px;
+.btn-reg {
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: rgb(64 61 61);
+    color: white;
+    border: none;
+    box-shadow: 0 0 5px gray;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.reg {
+    width: 300px;
+    margin-left: 45px;
+    display: flex;
+    justify-content: center;
+}
+
+header {
+    padding: 3% 1% 0 10%;
+}
+
+main {
+    width: 750px;
+    padding: 3% 10% 0 3%;
+}
+
+.head {
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 10%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px grey;
+}
+
+.exit {
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: rgb(49, 75, 122);
+    color: white;
+    box-shadow: 0 0 5px gray;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.users_block {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+}
+
+.posts_block {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius:  10px;
+    box-shadow: 0 0 10px gray;
+}
+
+.news-post-info {
+    width: 100%;
+    height: 50%;
+    background-color: white;
+    border-radius:  0 0 10px 10px;
+    box-shadow: 0 0 10px gray;
+    margin-bottom: 5px
+}
+
+.pors_block {
+    width: 100%;
+    height: 70%;
+    background-color: white;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 0 10px gray;
+    margin-bottom: 5px;
+}
+
+.table-user {
+    padding: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.img-user {
+    width: 70px;
+    height: 70px;
+}
+
+.name-sn {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.str {
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+}
+
+.header-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #979391;
+}
+
+.header-text:hover {
+    color: #161616;
+}
+
+.fon-user {
+    display: flex;
+    flex-direction: row;
+}
+
+.more_div {
+    margin: -25px 0px -20px -25px;
+    border-top: 1px solid #dce1e6;
+}
+
+.img-sn {
+    width: 275px;
+    display: flex;
+    flex-direction: row;
+}
+
+.ml-5 {
+    margin-left: 5px;
+}
+
+.acc {
+    width: 30px;
     height: 30px;
-    border: 2px solid black;
-    text-align: center;
+}
+
+.icon-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.area-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5%;
+}
+
+.per-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 26px;
+}
+
+.per-img{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.user-info{
+    font-size: 40px;
+}
+
+.btn-red-info{
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: rgb(138, 138, 138);
+    color: white;
+    border: none;
+    box-shadow: 0 0 5px gray;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.new-post{
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#post-add{
+    width: 100%;
+    height: 100%;
+}
+
+.btn-red{
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: rgb(216, 216, 216);
+    border: none;
+    color: black;
+    box-shadow: 0 0 5px gray;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.post-block-box{
+    padding: 5%;
 }
