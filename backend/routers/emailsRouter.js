@@ -53,7 +53,7 @@ router.put("/:id", async (req, res) => {
         if (err) {
             res.status(500).send(err);
         } else {
-            res.status(201).send("phone updated");
+            res.status(201).send("user updated");
         }
     })
 });

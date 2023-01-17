@@ -25,6 +25,22 @@ body {
     box-shadow: 0 0 10px rgb(4, 80, 48);
 }
 
+.login-aut-box {
+    margin-left: 30%;
+    margin-top: 10%;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid green;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(4, 80, 48);
+}
+
 .mt-10 {
     margin-top: 10px;
 }
@@ -33,14 +49,9 @@ body {
     margin-top: 20px;
 }
 
-.reg {
-    display: flex;
-    justify-content: space-between;
-}
-
-.reg {
+/* .reg {
     font-size: 40px;
-}
+} */
 
 .input {
     width: 300px;
@@ -147,6 +158,7 @@ main {
 .img-user {
     width: 70px;
     height: 70px;
+    border-radius: 50%;
 }
 
 .name-sn {

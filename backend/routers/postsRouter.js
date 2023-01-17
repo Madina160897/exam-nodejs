@@ -12,29 +12,6 @@ router.get("/", (req, res) => {
     });
 })
 
-router.get("/:id", (req, res) => {
-    const id = req.params.id;
-    PostModel.findById(id, (err, result) => {
-        if (err) {
-            res.status(500).send(err);
-        } else {
-            res.status(200).send(result);
-        }
-    })
-})
-
-router.post("/", (req, res) => {
-    const { login, password, name, surname, age } = req.body;
-    const newUser = new PostModel({ login, password, name, surname, age });
-    newUser.save((err) => {
-        if (err) {
-            res.status(500).send(err);
-        } else {
-            res.status(201).send("ok");
-        }
-    });
-})
-
 router.delete("/:id", (req, res) => {
     const id = req.params.id;
     PostModel.findByIdAndDelete(id, (err) => {
@@ -46,16 +23,38 @@ router.delete("/:id", (req, res) => {
     });
 })
 
-router.put("/:id", async (req, res) => {
-    const id = req.params.id
-    const { login, password, name, surname, age } = req.body;
-    await PostModel.findByIdAndUpdate(id, { login: login, password: password, name: name, surname: surname, age: age, }, (err) => {
+router.post("/", async (req, res) => {
+    const { userId, post, img, } = req.body;
+
+    const owner = await EmailModel.findById(userId);
+
+    const newCar = new PostModel({ owner, post, img, ownersHistory: [] });
+    newCar.save((err) => {
         if (err) {
             res.status(500).send(err);
         } else {
-            res.status(201).send("phone updated");
+            res.status(201).send("ok");
         }
-    })
-});
+    });
+})
+
+// router.post("/changeOwner", async (req, res) => {
+//     const { newOwnerId, carId } = req.body;
+
+//     const car = await PostModel.findById(carId);
+//     const newOwner = await EmailModel.findById(newOwnerId);
+
+//     const currentOwner = car.owner;
+//     car.owner = newOwner;
+//     car.ownersHistory.push(currentOwner);
+
+//     car.save((err) => {
+//         if (err) {
+//             res.status(500).send(err);
+//         } else {
+//             res.status(201).send("updated");
+//         }
+//     });
+// });
 
 module.exports = router;
