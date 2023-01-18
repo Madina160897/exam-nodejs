@@ -56,8 +56,8 @@ function close1() {
 }
 
 function save1() {
-    const users = JSON.parse(localStorage.getItem('Users'))
-    const user = JSON.parse(localStorage.getItem('user'));
+    let users = JSON.parse(localStorage.getItem('Users'))
+    let user = JSON.parse(localStorage.getItem('user'));
     let pThreeName = document.querySelector(".pThreeName");
     let pThreeSurname = document.querySelector(".pThreeSurname");
     let pThreeAge = document.querySelector(".pThreeAge");
@@ -69,18 +69,18 @@ function save1() {
     users.surname = (pThreeSurname.textContent = newSurname);
     users.age = (pThreeAge.textContent = newAge);
 
-    for (let i = 0; i < user.length; i++) {
-        if (users.email == user[i].email) {
-            user[i].name = users.name
-            user[i].surname = users.surname
-            user[i].age = users.age
+    for (let i = 0; i < users.length; i++) {
+        if (user.email == users[i].email) {
+            users[i].name = user.name
+            users[i].surname = user.surname
+            users[i].age = user.age
         }
     }
 
     localStorage.setItem("Users", JSON.stringify(users))
     localStorage.setItem("user", JSON.stringify(user))
     div1.style.display = "none";
-    
+
     const userId = user._id
 
     fetch(BASE_URL + `/emails/${userId}`, {

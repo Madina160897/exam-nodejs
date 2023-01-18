@@ -63,11 +63,17 @@ router.delete("/:id", (req, res) => {
     });
 })
 
-router.put("/:id", async (req, res) => {
-    const id = req.params.id
+router.put("/:id", (req, res) => {
+    const id = req.params.id;
     const { name, surname, age } = req.body;
+    EmailModel.findByIdAndUpdate(id, { name, surname, age }, (err) =>{
+        if(err){
+            res.status(500).send(err);
+        }else{
+            res.status(200).send("ok")
 
-    await EmailModel.findByIdAndUpdate(id, { name: name, surname: surname, age: age, })
-});
+        }
+    });
+})
 
 module.exports = router;
