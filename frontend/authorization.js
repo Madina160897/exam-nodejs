@@ -1,4 +1,4 @@
-const btnReg = document.querySelector(".btn-reg");
+const btnAut = document.querySelector(".btn-aut");
 
 
 const BASE_URL = "http://localhost:8080";
@@ -8,28 +8,40 @@ const fetchData = async (route) => {
     return await response.json();
 };
 
-btnReg.addEventListener("click", () => {
-    const users = fetchData("/emails")
-    
-    let currentUser = {
-        email: document.querySelector(".pOneEmail").value,
-        password: document.querySelector(".pOnePassword").value,
-    }
+btnAut.addEventListener("click", () => {
+    const email = document.querySelector(".pOneEmail").value;
+    const password = document.querySelector(".pOnePassword").value;
 
-    let findUser = users.filter(users => users.email == currentUser.email)
-    
-    if (!findUser) {
-        alert("No user with that email")
-        return
-    }
+    fetch(BASE_URL + "/emails")
+        .then(response => response.json())
+        .then(data => localStorage.setItem('Users', JSON.stringify(data)))
+        .catch(() => console.log(err));
 
-    if (findUser.password != currentUser.password) {
-        alert("Password is incorrect")
-        return
+    const users = JSON.parse(localStorage.getItem('Users'))
+
+    for (let i = 0; i <= users.length - 1; i++) {
+        if (!validateEmail(email)) {
+            alert("Incorrect email!")
+            break
+        } else if (email == users[i].email && password == users[i].password) {
+            localStorage.setItem('user', JSON.stringify(users[i]))
+
+            document.location.href = "./newsline.html"
+        }
     }
-    
-    if (findUser && findUser.password === currentUser.password){
-        return window.location.href = "./newsline.html"
-    }
-});
+})
+
+const validateEmail = (email) => {
+    return String(email)
+        .toLowerCase()
+        .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+};
+const validatePassword = (password) => {
+    return String(password)
+        .match(
+            /^\S*(?=.*[A-Z])(?=.*[0-9])(?=.*[/$!*])[a-zA-Z0-9*/$!]{8,}\S*$/g
+        );
+};
 

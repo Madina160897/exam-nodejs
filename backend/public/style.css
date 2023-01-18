@@ -49,10 +49,6 @@ body {
     margin-top: 20px;
 }
 
-/* .reg {
-    font-size: 40px;
-} */
-
 .input {
     width: 300px;
     height: 30px;
@@ -285,3 +281,26 @@ a {
 .post-block-box{
     padding: 5%;
 }
+
+.fon-block {
+    width: 100%;
+    height: 100vh;
+    display: none;
+    position: fixed;
+    background-color: rgb(219, 246, 253, 0.5);
+    margin-top: -217px;
+    margin-left: -294px;
+}
+
+.block {
+    width: 300px;
+    height: 300px;
+    display: none;
+    margin: auto;
+    border: 1px solid black;
+    padding: 30px;
+    box-sizing: border-box;
+    background-color: white;
+    margin: 160px 475px;
+}
+

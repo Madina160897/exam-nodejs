@@ -2,8 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const postsRouter = require("./routers/postsRouter");
-// const emailsRouter = require("./routers/emailsRouter");
-const authRouter = require("./routers/authRouter")
+const emailsRouter = require("./routers/emailsRouter");
+// const authRouter = require("./routers/authRouter")
 const cors = require("cors");
 
 const app = express();
@@ -19,7 +19,7 @@ mongoose.connect('mongodb+srv://madina160897:madina@cluster0.tshfre4.mongodb.net
     } else {
         console.log("server started");
         app.use("/posts", postsRouter);
-        app.use("/emails", authRouter);
+        app.use("/emails", emailsRouter);
         app.listen(8080);
     }
 });

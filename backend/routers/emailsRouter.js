@@ -23,16 +23,33 @@ router.get("/:id", (req, res) => {
     })
 })
 
-router.post("/", (req, res) => {
+router.post("/regis", async (req, res) => {
     const { email, password, name, surname, age } = req.body;
+    const candidate = await EmailModel.findOne({ email });
+    if (candidate) {
+        return res.status(400).json({ message: "Пользователь с таким именем уже существует" });
+    }
     const newUser = new EmailModel({ email, password, name, surname, age });
     newUser.save((err) => {
         if (err) {
-            res.status(500).send(err);
+            res.status(500).send("Registration error");
         } else {
-            res.status(201).send("ok");
+            res.status(201).send("Пользователь успешно зарегистрирован");
         }
+
     });
+})
+
+router.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+    const user = await EmailModel.findOne({ email });
+    if (!user) {
+        return res.status(400).send(`Пользователь ${email} не найден`);
+    }
+    const passUser = await EmailModel.findOne({ password });
+    if (!passUser) {
+        return res.status(400).send('Введен неверный пароль');
+    };
 })
 
 router.delete("/:id", (req, res) => {
@@ -48,14 +65,9 @@ router.delete("/:id", (req, res) => {
 
 router.put("/:id", async (req, res) => {
     const id = req.params.id
-    const { email, password, name, surname, age } = req.body;
-    await EmailModel.findByIdAndUpdate(id, { email: email, password: password, name: name, surname: surname, age: age, }, (err) => {
-        if (err) {
-            res.status(500).send(err);
-        } else {
-            res.status(201).send("user updated");
-        }
-    })
+    const { name, surname, age } = req.body;
+
+    await EmailModel.findByIdAndUpdate(id, { name: name, surname: surname, age: age, })
 });
 
 module.exports = router;
