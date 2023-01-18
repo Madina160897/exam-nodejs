@@ -65,9 +65,9 @@ function save1() {
     let newSurname = document.querySelector(".newSurname").value;
     let newAge = document.querySelector(".newAge").value;
 
-    users.name = (pThreeName.textContent = newName);
-    users.surname = (pThreeSurname.textContent = newSurname);
-    users.age = (pThreeAge.textContent = newAge);
+    user.name = (pThreeName.textContent = newName);
+    user.surname = (pThreeSurname.textContent = newSurname);
+    user.age = (pThreeAge.textContent = newAge);
 
     for (let i = 0; i < users.length; i++) {
         if (user.email == users[i].email) {

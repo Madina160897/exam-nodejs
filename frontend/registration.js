@@ -1,12 +1,15 @@
 const btnReg = document.querySelector(".btn-reg");
 
-
 const BASE_URL = "http://localhost:8080";
+
+const response = fetch(BASE_URL + '/emails');
+    const users = response.json();
 
 const fetchData = async (route) => {
     const response = await fetch(BASE_URL + route);
     return await response.json();
 };
+
 
 btnReg.addEventListener("click", () => {
     const emailReg = document.querySelector(".email-reg").value;
@@ -24,7 +27,7 @@ btnReg.addEventListener("click", () => {
     };
 
     if (checkDate(payload)) {
-        fetch(BASE_URL + "/emails", {
+        fetch(BASE_URL + "/emails/regis", {
             method: "post",
             headers: {
                 'Accept': 'application/json',
@@ -79,3 +82,14 @@ const validateAge = (age) => {
             /^[1-9][0-9]$|^[1-9]$|^100$/
         );
 };
+
+function emailDate(payload) {
+    for (let i = 0; i < users.length - 1; i++) {
+        if (payload.email === users.email) {
+            alert("Пользователь с таким именем уже существует");
+            return false;
+        } else {
+            return true
+        }
+    }
+}

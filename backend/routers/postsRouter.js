@@ -12,49 +12,19 @@ router.get("/", (req, res) => {
     });
 })
 
-router.delete("/:id", (req, res) => {
-    const id = req.params.id;
-    PostModel.findByIdAndDelete(id, (err) => {
-        if (err) {
-            res.status(500).send(err);
-        } else {
-            res.status(200).send("deleted");
-        }
-    });
-})
-
 router.post("/", async (req, res) => {
-    const { userId, post, img, } = req.body;
+    const { userId, title, post, img } = req.body;
 
-    const owner = await EmailModel.findById(userId);
+    const user = await EmailModel.findById(userId);
 
-    const newCar = new PostModel({ owner, post, img, ownersHistory: [] });
-    newCar.save((err) => {
-        if (err) {
+    const newPost = new PostModel({ user, title, post, img });
+    newPost.save((err) =>{ 
+        if(err){
             res.status(500).send(err);
-        } else {
-            res.status(201).send("ok");
+        }else{
+            res.status(200).send("Added new post");
         }
     });
 })
-
-// router.post("/changeOwner", async (req, res) => {
-//     const { newOwnerId, carId } = req.body;
-
-//     const car = await PostModel.findById(carId);
-//     const newOwner = await EmailModel.findById(newOwnerId);
-
-//     const currentOwner = car.owner;
-//     car.owner = newOwner;
-//     car.ownersHistory.push(currentOwner);
-
-//     car.save((err) => {
-//         if (err) {
-//             res.status(500).send(err);
-//         } else {
-//             res.status(201).send("updated");
-//         }
-//     });
-// });
 
 module.exports = router;

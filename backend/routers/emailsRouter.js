@@ -27,7 +27,7 @@ router.post("/regis", async (req, res) => {
     const { email, password, name, surname, age } = req.body;
     const candidate = await EmailModel.findOne({ email });
     if (candidate) {
-        return res.status(400).json({ message: "Пользователь с таким именем уже существует" });
+        return res.status(500).json({ message: "Пользователь с таким именем уже существует" });
     }
     const newUser = new EmailModel({ email, password, name, surname, age });
     newUser.save((err) => {
@@ -40,17 +40,17 @@ router.post("/regis", async (req, res) => {
     });
 })
 
-router.post("/login", async (req, res) => {
-    const { email, password } = req.body;
-    const user = await EmailModel.findOne({ email });
-    if (!user) {
-        return res.status(400).send(`Пользователь ${email} не найден`);
-    }
-    const passUser = await EmailModel.findOne({ password });
-    if (!passUser) {
-        return res.status(400).send('Введен неверный пароль');
-    };
-})
+// router.post("/login", async (req, res) => {
+//     const { email, password } = req.body;
+//     const user = await EmailModel.findOne({ email });
+//     if (!user) {
+//         return res.status(400).send(`Пользователь ${email} не найден`);
+//     }
+//     const passUser = await EmailModel.findOne({ password });
+//     if (!passUser) {
+//         return res.status(400).send('Введен неверный пароль');
+//     };
+// })
 
 router.delete("/:id", (req, res) => {
     const id = req.params.id;

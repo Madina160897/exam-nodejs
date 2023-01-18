@@ -6,14 +6,13 @@ const EmailSchema = new Schema({
     name: String,
     surname: String,
     age: Number,
-    frends: [],
 });
 
 const PostSchema = new Schema({
-    owner: EmailSchema,
+    user: EmailSchema,
+    title: String,
     post: String,
     img: String,
-    ownersHistory: [EmailSchema],
 });
 
 
